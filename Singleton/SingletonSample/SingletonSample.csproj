@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{09645B5A-308D-49B3-AB6A-A526F216148A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SingletonSample</RootNamespace>
+    <AssemblyName>SingletonSample</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SimpleInjector, Version=4.0.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.4.0.0\lib\net45\SimpleInjector.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\NumberGenerator.cs" />
+    <Compile Include="Core\DefaultDelayConfig.cs" />
+    <Compile Include="Core\Factories\DoubleCheckLockedSingletonFileLoggerFactory.cs" />
+    <Compile Include="Core\Factories\InstanceFileLoggerFactory.cs" />
+    <Compile Include="Core\Factories\LazySingletonFileLoggerFactory.cs" />
+    <Compile Include="Core\Factories\LockedSingletonFileLoggerFactory.cs" />
+    <Compile Include="Core\Factories\SingletonFileLoggerFactory.cs" />
+    <Compile Include="Core\FileLoggers\BaseFileLogger.cs" />
+    <Compile Include="Core\FileLoggers\FileLogger.cs" />
+    <Compile Include="Core\FileLoggers\FileLoggerDoubleCheckLocking.cs" />
+    <Compile Include="Core\FileLoggers\FileLoggerLazySingleton.cs" />
+    <Compile Include="Core\FileLoggers\FileLoggerSingleton.cs" />
+    <Compile Include="Core\FileLoggers\FileLoggerThreadSafeSingleton.cs" />
+    <Compile Include="Core\NumbersToTextFile.cs" />
+    <Compile Include="Core\NumbersToTextFileAsync.cs" />
+    <Compile Include="Interfaces\IFileLogger.cs" />
+    <Compile Include="Interfaces\IDelayConfig.cs" />
+    <Compile Include="Interfaces\IFileLoggerFactory.cs" />
+    <Compile Include="Interfaces\INumbersToTextFile.cs" />
+    <Compile Include="IoC.cs" />
+    <Compile Include="UnityDependencyResolver.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Singleton\LazySingleton.cs" />
+    <Compile Include="Singleton\Singleton.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
